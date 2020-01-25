@@ -1,10 +1,12 @@
-package com.example.firebasepushnotification;
+package com.example.firebasepushnotification.Receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.widget.Toast;
+
+import com.example.firebasepushnotification.Utils.SendAlert;
 
 public class NotificationBroadcastReceiver extends BroadcastReceiver {
 
@@ -18,13 +20,13 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
             Toast.makeText(context,"Yes " + count,Toast.LENGTH_SHORT).show();
         }
 
-        if(count == 2)
+        if(count == 2 || count == 3)
         {
             Handler h = new Handler();
             h.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if(count < 4)
+                    if(count < 5)
                         count = 0;
                 }
             },2000);
@@ -33,11 +35,7 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
         if(count > 5)
         {
             count=0;
-            Intent i = new Intent(context, SendAlert.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            //context.startActivity(i);
-
-            SendAlert sendAlert = new SendAlert();
+            SendAlert sendAlert = new SendAlert(context);
         }
     }
 }

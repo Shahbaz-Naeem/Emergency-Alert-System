@@ -1,6 +1,8 @@
-package com.example.firebasepushnotification;
+package com.example.firebasepushnotification.Models;
 
-public class User extends UserId{
+import com.example.firebasepushnotification.Utils.UserId;
+
+public class User extends UserId {
     String name, image;
 
     public User() {

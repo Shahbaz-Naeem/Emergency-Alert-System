@@ -11,16 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".NotificationActivity">
+        <activity android:name=".Activities.NotificationActivity">
             <intent-filter>
                 <action android:name="com.example.firebasepushnotification.notificationactivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".SendActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.SendActivity" />
+        <activity android:name=".Activities.RegisterActivity" />
+        <activity android:name=".Activities.LoginActivity" />
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,18 +29,18 @@
         </activity>
 
         <service
-            android:name=".FirebaseMessagingService"
+            android:name=".Services.FirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <service android:name=".NotificationDetectionService"
+        <service android:name=".Services.NotificationDetectionService"
             android:enabled="true"
             android:permission="android.permission.BIND_JOB_SERVICE"/>
 
-        <receiver android:name=".NotificationBroadcastReceiver" android:enabled="true"/>
+        <receiver android:name=".Receivers.NotificationBroadcastReceiver" android:enabled="true"/>
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
@@ -49,5 +49,6 @@
     </application>
 
     <permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>

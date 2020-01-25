@@ -1,4 +1,4 @@
-package com.example.firebasepushnotification;
+package com.example.firebasepushnotification.Utils;
 
 import androidx.annotation.NonNull;
 

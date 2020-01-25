@@ -1,23 +1,21 @@
-package com.example.firebasepushnotification;
+package com.example.firebasepushnotification.Fragments;
 
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.google.android.gms.tasks.OnFailureListener;
+import com.example.firebasepushnotification.Activities.LoginActivity;
+import com.example.firebasepushnotification.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -95,7 +93,7 @@ public class ProfileFragment extends Fragment {
                     public void onSuccess(Void aVoid) {
                         mAuth.signOut();
 
-                        Intent loginIntent = new Intent(container.getContext(),LoginActivity.class);
+                        Intent loginIntent = new Intent(container.getContext(), LoginActivity.class);
                         startActivity(loginIntent);
                     }
                 });

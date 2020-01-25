@@ -1,13 +1,15 @@
-package com.example.firebasepushnotification;
-
-import android.widget.Toast;
+package com.example.firebasepushnotification.Adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-class PagerViewAdapter extends FragmentPagerAdapter {
+import com.example.firebasepushnotification.Fragments.NotificationFragment;
+import com.example.firebasepushnotification.Fragments.ProfileFragment;
+import com.example.firebasepushnotification.Fragments.UserFragment;
+
+public class PagerViewAdapter extends FragmentPagerAdapter {
 
 
     public PagerViewAdapter(@NonNull FragmentManager fm) {

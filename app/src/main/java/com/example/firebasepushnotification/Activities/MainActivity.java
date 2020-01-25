@@ -1,17 +1,22 @@
-package com.example.firebasepushnotification;
+package com.example.firebasepushnotification.Activities;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.firebasepushnotification.Adapters.PagerViewAdapter;
+import com.example.firebasepushnotification.R;
+import com.example.firebasepushnotification.Services.NotificationDetectionService;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,8 +36,10 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser == null)
             sendToLogin();
-        else
-            startService(new Intent(getApplicationContext(),NotificationDetectionService.class));
+        else {
+            startService(new Intent(getApplicationContext(), NotificationDetectionService.class));
+            ActivityCompat.requestPermissions(this,new String[]{ACCESS_FINE_LOCATION},1);
+        }
     }
 
     @Override

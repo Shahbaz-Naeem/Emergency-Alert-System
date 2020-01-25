@@ -1,4 +1,4 @@
-package com.example.firebasepushnotification;
+package com.example.firebasepushnotification.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,12 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.firebasepushnotification.Activities.SendActivity;
+import com.example.firebasepushnotification.R;
+import com.example.firebasepushnotification.Models.User;
 
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-class UserRecyclerAdapter extends RecyclerView.Adapter<UserRecyclerAdapter.ViewHolder> {
+public class UserRecyclerAdapter extends RecyclerView.Adapter<UserRecyclerAdapter.ViewHolder> {
 
     Context context;
     List<User> userList;
@@ -49,7 +52,7 @@ class UserRecyclerAdapter extends RecyclerView.Adapter<UserRecyclerAdapter.ViewH
             @Override
             public void onClick(View v) {
 
-                Intent sendIntent = new Intent(context,SendActivity.class);
+                Intent sendIntent = new Intent(context, SendActivity.class);
                 sendIntent.putExtra("user_id",user_id);
                 sendIntent.putExtra("user_name",user.getName());
                 context.startActivity(sendIntent);

@@ -1,4 +1,4 @@
-package com.example.firebasepushnotification;
+package com.example.firebasepushnotification.Services;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.firebasepushnotification.R;
 import com.google.firebase.messaging.RemoteMessage;
 
 public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
@@ -23,10 +24,15 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
         String messageMessage = remoteMessage.getData().get("message");
         String messageFromId = remoteMessage.getData().get("from_id");
+        String messageFromLongitude = remoteMessage.getData().get("from_longitude");
+        String messageFromLatitude = remoteMessage.getData().get("from_latitude");
 
         Intent intent = new Intent(click_action);
         intent.putExtra("message",messageMessage);
-        intent.putExtra("from_id",messageFromId);
+        intent.putExtra("from_id",messageTitle);
+        intent.putExtra("from_longitude",messageFromLongitude);
+        intent.putExtra("from_latitude",messageFromLatitude);
+
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 

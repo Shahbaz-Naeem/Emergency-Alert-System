@@ -1,25 +1,23 @@
-package com.example.firebasepushnotification;
+package com.example.firebasepushnotification.Fragments;
 
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
+import com.example.firebasepushnotification.R;
+import com.example.firebasepushnotification.Models.User;
+import com.example.firebasepushnotification.Adapters.UserRecyclerAdapter;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -51,8 +49,9 @@ public class UserFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.user_recyclerView);
         usersList = new ArrayList<>();
 
-        mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
+
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
 
         mUserRecyclerAdapter = new UserRecyclerAdapter(container.getContext(),usersList);
         mRecyclerView.setAdapter(mUserRecyclerAdapter);

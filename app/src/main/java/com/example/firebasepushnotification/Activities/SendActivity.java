@@ -1,6 +1,5 @@
-package com.example.firebasepushnotification;
+package com.example.firebasepushnotification.Activities;
 
-import android.location.Location;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -13,8 +12,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.firebasepushnotification.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -66,6 +67,9 @@ public class SendActivity extends AppCompatActivity {
                     HashMap<String,Object> notification = new HashMap<>();
                     notification.put("message", message[0]);
                     notification.put("from",mCurrentId);
+                    notification.put("longitude","0.0");
+                    notification.put("latitude","0.0");
+                    notification.put("timestamp", Timestamp.now());
 
                     mFireStore.collection("Users/"+mUserId+"/Notifications").add(notification).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
